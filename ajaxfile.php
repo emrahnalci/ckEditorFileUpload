@@ -4,7 +4,7 @@ $type = $_GET['type'];
 $CKEditor = $_GET['CKEditor'];
 $funcNum  = $_GET['CKEditorFuncNum'];
 
-// Image upload
+
 if($type == 'image'){
 
     $allowed_extension = array(
@@ -12,15 +12,13 @@ if($type == 'image'){
         "jpg",
         "jpeg"
     );
-
-    // Get image file extension
+    
     $file_extension = pathinfo($_FILES["upload"]["name"], PATHINFO_EXTENSION);
 
     if(in_array(strtolower($file_extension),$allowed_extension)){
 
         if(move_uploaded_file($_FILES['upload']['tmp_name'], "uploads/".$_FILES['upload']['name'])){
 
-            // File path
             if(isset($_SERVER['HTTPS'])){
                 $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
             }
@@ -37,7 +35,6 @@ if($type == 'image'){
     exit;
 }
 
-// File upload
 if($type == 'file'){
 
     $allowed_extension = array(
@@ -46,14 +43,11 @@ if($type == 'file'){
         "docx"
     );
 
-    // Get image file extension
     $file_extension = pathinfo($_FILES["upload"]["name"], PATHINFO_EXTENSION);
 
     if(in_array(strtolower($file_extension),$allowed_extension)){
 
         if(move_uploaded_file($_FILES['upload']['tmp_name'], "uploads/".$_FILES['upload']['name'])){
-
-            // File path
             if(isset($_SERVER['HTTPS'])){
                 $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
             }
